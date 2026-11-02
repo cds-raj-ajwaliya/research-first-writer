@@ -117,7 +117,7 @@ The full method: [`SKILL.md`](skills/research-first-writer/SKILL.md) · checklis
 
 ## The bundled tools
 
-Both are standard-library Python with nothing to install, and both work in CI.
+Python scripts are standard-library Python with nothing to install, and work in CI.
 
 ```bash
 # The draft checks a rule can decide; exit code 1 if anything blocks
@@ -125,13 +125,18 @@ python3 skills/research-first-writer/scripts/check_article.py examples/how-to-ge
 
 # Transparent page scores from the signals you observed
 python3 skills/research-first-writer/scripts/score_pages.py examples/how-to-get-cited-by-ai-search/pages.json
+
+# Run the Claude Code eval suite (scored runs with and without the plugin)
+claude plugin eval .
 ```
 
 `check_article.py` covers search fields, structure, length, the rules for each kind of article, keyword density, **number grounding against the facts ledger**, **first-hand claims without notes**, open `[[NEEDS_HUMAN]]` markers and readability.
 
+The evaluation suite in [`evals/`](evals/) verifies that the skill triggers on plain requests, refuses invented testing claims, and catches weak drafts with positive performance deltas ($\Delta$).
+
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md). Next up: a `/research-first-writer:write` command, Claude Code eval suites, an originality checker, and examples in more languages. Upvote or claim items in [Issues](https://github.com/jayanti-prajapati/research-first-writer/issues).
+See [ROADMAP.md](ROADMAP.md). Shipped: Claude Code evaluation suite (`claude plugin eval`). Next up: a `/research-first-writer:write` command, an originality checker, and examples in more languages. Upvote or claim items in [Issues](https://github.com/jayanti-prajapati/research-first-writer/issues).
 
 ## Forking this
 
